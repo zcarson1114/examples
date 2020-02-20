@@ -1,6 +1,7 @@
 /**
  * @file main.cc
  * @author Krerkkiat Chusap
+ * @brief The main() function as an example to test the fibonacci function.
  */
 #include <iostream>
 
