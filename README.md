@@ -68,6 +68,11 @@ changliu@pu1.cs.ohio.edu's password:
   RATHER THAN SSH INTO A WORKSTATION IN THE LABS , PLEASE USE OUR SERVERS.
 Last login: Wed Nov 20 13:25:21 2019 from 74.113.47.217
 .bash_profile executed.
-changliu@pu1:~$
+changliu@pu1:~$ which doxygen
+/usr/bin/doxygen
+changliu@pu1:~$ doxygen
+error: Doxyfile not found and no input file specified!
+Doxygen version 1.8.13
+...
 ```
 pu[1-3].cs.ohio.edu are the preferred remote servers. odd[?].cs.ohio.edu are the workstations in the 3rd floor lab. If you don't know your user name and password, contact Mr. John Tysko.
