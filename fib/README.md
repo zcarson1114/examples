@@ -19,3 +19,6 @@ creates the basic configuration for doxygen.
 
 Later on when a document need to be recreate the command `doxygen` can be used. If the configuration file is
 not named `Doxyfile`, then a file name can be added to the command (e.g. `doxygen ConfigFile`).
+
+This README.md file is used as the main page for the generated doxygen documentation. 
+https://stackoverflow.com/questions/13368350/use-the-readme-md-file-as-main-page-in-doxygen
