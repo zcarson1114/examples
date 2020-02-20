@@ -1,6 +1,11 @@
 /**
  * @file fib.h
  * @brief Define functions to calculate fibonacci.
+ * 
+ * This is the include file for the fibonacci library.
+ * It contains various functions to calculate the fibonacci
+ * number.
+ * 
  * @author Krerkkiat Chusap
  */
 #include <iostream>
