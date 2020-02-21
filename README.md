@@ -23,8 +23,9 @@ The `fib` example contains configuration of [Doxygen](http://www.doxygen.nl/) (`
 that automatically build doxygen (using `cd fib && make doc`), and publish the generated document
 to [https://ou-cs3560-examples.netlify.com/](https://ou-cs3560-examples.netlify.com/).
 
+## Connect to school servers
 
-## How to connect to 3rd Floor Linux Computers from 1st Floor Windows Lab computers
+### How to connect to 3rd Floor Linux Computers from 1st Floor Windows Lab computers
 
 Type in WINDOWS-R, then type in "cmd" in the dialog box.
 
@@ -76,3 +77,21 @@ Doxygen version 1.8.13
 ...
 ```
 pu[1-3].cs.ohio.edu are the preferred remote servers. odd[?].cs.ohio.edu are the workstations in the 3rd floor lab. If you don't know your user name and password, contact Mr. John Tysko.
+
+### Connect via vscode
+
+By using the extension call Visual Studio Code Remote Development [https://code.visualstudio.com/docs/remote/remote-overview](https://code.visualstudio.com/docs/remote/remote-overview), you can use vscode on your laptop (or from PC in the classroom; see the first extra note) to edit a file on school server.
+
+You will also have access to GUI for git that vscode has as well. But do not forget to still study which Git command do what since this class is focusing on that.
+
+To have a better experience, you will have to use SSH key authentication where you are not require to type password every time you are logging to the school server. Please see this article for how to do it: [https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server)
+
+This is what I usually have in my ~/.ssh/config for the school server.
+
+![ssh-config](./.github/images/ssh-config.png)
+
+Then in the extension you will see the list of SSH target.
+
+![ssh-config](./.github/images/ssh-targets-list.png)
+
+Then you can connect to the school server and edit file there from vscode.
