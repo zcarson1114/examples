@@ -6,6 +6,7 @@
 #include <iostream>
 
 #include "fib.h"
+#include "fib_cache.h"
 
 int main() {
     int n;
@@ -13,5 +14,9 @@ int main() {
     std::cin >> n;
 
     std::cout << "Fib(n) is " << fib_recursive(n) << std::endl;
+
+    FibCache fib_cache(5);
+    std::cout << "FibCache(n) is " << fib_cache.get(n) << std::endl;
+    
     return EXIT_SUCCESS;
 }
