@@ -25,11 +25,23 @@ to [https://ou-cs3560-examples.netlify.com/](https://ou-cs3560-examples.netlify.
 
 ## Connect to school servers
 
-### How to connect to 3rd Floor Linux Computers from 1st Floor Windows Lab computers
+### How to connect to 3rd Floor Linux Computers from Windows computers
 
-Type in WINDOWS-R, then type in "cmd" in the dialog box.
+Follow the following steps to connect to schoold server using SSH. If you don't know your user name and password, contact the system administrator, Mr. Carl Hawes.
 
-In the window with the command prompt, do the following:
+1. Open the Command Prompt or Windows PowerShell. It can be opened in various methods:
+   - For the Command Prompt, type in WINDOWS-R, then type in "cmd" in the dialog box.
+   - Bring up start menu, and serach for "Command Prompt" or "PowerShell"
+
+2. In the window with the command prompt (or powershell), type in the command for ssh:
+
+```shell
+ssh pu1.cs.ohio.edu
+```
+If the error mention the ssh command not found, you need to enable OpenSSH client feature by search for "Manage optional features" in the start menu,
+and click "Add a feature", then search for "OpenSSH Client", and install it.
+
+For example, here is the output from the using `ssh changliu@pu1.cs.ohio.edu` in command prompt
 
 ```
 C:\Users\Chang Liu>ssh changliu@pu1.cs.ohio.edu
@@ -76,7 +88,11 @@ error: Doxyfile not found and no input file specified!
 Doxygen version 1.8.13
 ...
 ```
-pu[1-3].cs.ohio.edu are the preferred remote servers. odd[?].cs.ohio.edu are the workstations in the 3rd floor lab. If you don't know your user name and password, contact Mr. John Tysko.
+pu[1-3].cs.ohio.edu are the preferred remote servers. odd[?].cs.ohio.edu are the workstations in the 3rd floor lab.
+
+### For Mac
+
+Follow the same step for Windows, but use "Terminal" app instead.
 
 ### Connect via vscode
 
