@@ -27,8 +27,6 @@ to [https://ou-cs3560-examples.netlify.com/](https://ou-cs3560-examples.netlify.
 
 ### How to connect to 3rd Floor Linux Computers from Windows computers
 
-Follow the following steps to connect to schoold server using SSH. If you don't know your user name and password, contact the system administrator, Mr. Carl Hawes.
-
 1. Open the Command Prompt or Windows PowerShell. It can be opened in various methods:
    - For the Command Prompt, type in WINDOWS-R, then type in "cmd" in the dialog box.
    - Bring up start menu, and serach for "Command Prompt" or "PowerShell"
@@ -36,8 +34,11 @@ Follow the following steps to connect to schoold server using SSH. If you don't 
 2. In the window with the command prompt (or powershell), type in the command for ssh:
 
 ```shell
-ssh pu1.cs.ohio.edu
+ssh username@pu1.cs.ohio.edu
 ```
+
+Don't forget to replace the `username` with your actual username (it is not the same one as the email handle). If you forget your username, or password you can contact the system administrator, Mr. Carl Hawes.
+
 If the error mention the ssh command not found, you need to enable OpenSSH client feature by search for "Manage optional features" in the start menu,
 and click "Add a feature", then search for "OpenSSH Client", and install it.
 
