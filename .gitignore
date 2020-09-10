@@ -6,6 +6,9 @@ main
 *.o
 *-dist.tar.gz
 
+Thumbs.db
+.DS_Store
+
 # Generated documentation
 html/
 
