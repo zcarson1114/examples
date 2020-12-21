@@ -1,3 +1,4 @@
+import assert from 'assert';
 import handler from 'serve-handler';
 import http from 'http';
 
@@ -14,15 +15,34 @@ describe('Web App', function () {
     });
 
     after(function() {
+        driver.quit();
         server.close();
     });
 
-    it('should have proper ui', async function() {
+    it('should have a proper ui', async function() {
         this.timeout(60000); // Give the test case 1 minute.
 
-        await driver.get('http://localhost:5000');
-        await driver.findElement(By.id('value'));
+        try {
+            await driver.get('http://localhost:5000');
 
-        await driver.quit();
+            let value_input_ele = await driver.wait(until.elementLocated(By.css('#value')), 5000);
+            let btn = await driver.wait(until.elementLocated(By.css('#calculate-btn')), 5000);
+        } finally {}
+    });
+
+    it('should show the result when click on the button', async function() {
+        this.timeout(60000);
+        try {
+            await driver.get('http://localhost:5000');
+
+            let value_input_ele = await driver.wait(until.elementLocated(By.css('#value')), 5000);
+            let btn = await driver.wait(until.elementLocated(By.css('#calculate-btn')), 5000);
+            let result_ele = await driver.wait(until.elementLocated(By.css('#result')), 5000);
+
+
+            await btn.click();
+            assert.equal("8", await result_ele.getAttribute('textContent'));
+
+        } finally {}
     });
 });
