@@ -6,7 +6,12 @@
         <script type="module" src="main.js"></script>
     </head>
     <body>
-        <h2>Fibonacci Calculator</h2>
-        <p>Open the console and run <code>fib(6)</code>. You should get a Fibonacci number at position 6 which is 8.</p>
+        <div id="container">
+            <h2>Fibonacci Calculator</h2>
+            <label for="value">N:</label>
+            <input id="value" name="value" type="text" value="6"></input>
+            <button id="calculate-btn">Calculate</button>
+            <p id="result"></p>
+        </div>
     </body>
 </html>

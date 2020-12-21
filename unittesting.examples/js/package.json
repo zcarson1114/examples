@@ -2,13 +2,14 @@
   "name": "cs3560-unit-testing-example",
   "version": "1.0.0",
   "description": "Example of unit testing in JavaScript",
-  "main": ".#main.js",
+  "main": "main.js",
   "directories": {
     "test": "test"
   },
   "dependencies": {},
   "devDependencies": {
     "mocha": "^8.2.1",
+    "selenium-webdriver": "^4.0.0-alpha.8",
     "serve": "^11.3.2"
   },
   "scripts": {
