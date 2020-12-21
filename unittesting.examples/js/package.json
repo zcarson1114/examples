@@ -14,7 +14,8 @@
   },
   "scripts": {
     "serve": "serve",
-    "test": "mocha"
+    "test": "mocha --fgrep 'Fib Module'",
+    "test-browser": "mocha --fgrep 'Web App'"
   },
   "repository": {
     "type": "git",

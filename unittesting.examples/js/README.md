@@ -5,11 +5,11 @@ as the test framework.
 
 ## Requirements
 
-Install Node.js version greater than 13.2.0. Then run `npm install` to install packages.
+Install Node.js version greater than 13.2.0. Then run `npm install` in this folder to install packages. You will also need selenium driver for a browser that is available on your system.
 
 ## Run the test cases
 
-To run the test cases, run `npm run test`.
+To run the unit test cases, run `npm run test`. To run the selenium test cases, run `npm run test-browser`.
 
 ## Run the web application
 
