@@ -126,6 +126,154 @@ CMakeUserPresets.json
 # End of https://www.toptal.com/developers/gitignore/api/c++,cmake
 ```
 
-Before we add files to the staging area, let also add vcpkg into the .gitignore. It should just be a line of `vcpkg` at the top of `.gitignore` file. You can add it as a submodule, but we will not do that in this example.
+Before we add files to the staging area, let also add vcpkg into the .gitignore. It should just be a line of `vcpkg/` at the top of `.gitignore` file. You can add the vcpkg as a submodule as well, but we will not cover how to do that in this example.
 
 Now let write simple application that use curlpp.
+
+```cpp
+/**
+Base on example at https://github.com/jpbarrette/curlpp/blob/master/examples/example02.cpp
+ */
+#include <iostream>
+#include <string>
+#include <cstring>
+#include <list>
+#include <sstream>
+
+#include <curlpp/cURLpp.hpp>
+#include <curlpp/Easy.hpp>
+#include <curlpp/Options.hpp>
+#include <curlpp/Exception.hpp>
+
+using namespace std;
+
+int main(int argc, char **argv) {
+  ostringstream os;
+  string url = "https://httpbin.org/get";
+
+  try {
+    curlpp::Cleanup cleaner;
+    curlpp::Easy request;
+
+    list<string> headers;
+    headers.push_back("Content-Type: application/json");
+
+    request.setOpt(new curlpp::Options::Verbose(false));
+    request.setOpt(new curlpp::Options::HttpHeader(headers));
+    request.setOpt(new curlpp::Options::WriteStream(&os));
+    request.setOpt(new curlpp::Options::Url(url));
+
+    request.perform();
+
+    cout << os.str() << std::endl;
+  } catch (curlpp::LogicError & e) {
+    cout << e.what() << std::endl;
+  } catch (curlpp::RuntimeError & e) {
+    cout << e.what() << std::endl;
+  }
+  return EXIT_SUCCESS;
+}
+```
+
+Since we are using curlpp, we need to modify both CMakeLists.txt files. The first file at the top level of the project should now look like this.
+
+```cmake
+cmake_minimum_required(VERSION 3.10)
+
+set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake
+  CACHE STRING "Vcpkg toolchain file")
+
+project(UnitTestingExample CXX)
+
+add_subdirectory(src)
+```
+
+The one in the `src` directory should now look like this
+
+```cmake
+add_executable(main main.cc)
+
+find_package(unofficial-curlpp CONFIG REQUIRED)
+target_link_libraries(main PRIVATE unofficial::curlpp::curlpp)
+```
+
+Since we are modifying CMakeLists.txt, we need to reconfigure the project by remove the build directory and rerun `cmake -S . -B build` on the top level of the project.
+
+```plain
+-- The CXX compiler identification is GNU 10.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for C++ include pthread.h
+-- Looking for C++ include pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+-- Found OpenSSL: /home/krerkkiat/class/cs3560-fall-2020-2021-ta/repos/examples/unittesting.examples/cpp/vcpkg/installed/x64-linux/debug/lib/libcrypto.a (found suitable version "1.1.1h", minimum required is "1")  
+-- Found ZLIB: /home/krerkkiat/class/cs3560-fall-2020-2021-ta/repos/examples/unittesting.examples/cpp/vcpkg/installed/x64-linux/debug/lib/libz.a (found suitable version "1.2.11", minimum required is "1") 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/krerkkiat/class/cs3560-fall-2020-2021-ta/repos/examples/unittesting.examples/cpp/build
+```
+
+Now we can recompile and run the program again.
+
+```shell
+$ cd build
+$ make
+Scanning dependencies of target main
+[ 50%] Building CXX object src/CMakeFiles/main.dir/main.cc.o
+[100%] Linking CXX executable main
+[100%] Built target main
+$ ./src/main
+{
+  "args": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Content-Type": "application/json", 
+    "Host": "httpbin.org", 
+  }, 
+  "origin": "127.0.0.1", 
+  "url": "https://httpbin.org/get"
+}
+```
+
+Now that we can read response, let parse it into JSON object. We will be using nlohmann/json library that can be installed by
+
+```shell
+$ ./vcpkg/vcpkg install nlohmann-json
+```
+
+Then add the following two lines into CMakeLists.txt inside src directory.
+
+```cmake
+find_package(nlohmann_json CONFIG REQUIRED)
+target_link_libraries(main PRIVATE nlohmann_json nlohmann_json::nlohmann_json)
+```
+
+For our main.cpp, we need to add
+
+```cpp
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
+```
+
+Then we can parse the output data into JSON object.
+
+```cpp
+    // Existing code.
+    request.perform();
+    
+    auto data = json::parse(os.str());
+    
+    cout << data["headers"] << endl;
+```
+
+Now we should have everything to handle Twitter API call.
