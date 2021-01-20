@@ -23,9 +23,9 @@ The `fib` example contains configuration of [Doxygen](http://www.doxygen.nl/) (`
 that automatically build doxygen (using `cd fib && make doc`), and publish the generated document
 to [https://ou-cs3560-examples.netlify.com/](https://ou-cs3560-examples.netlify.com/).
 
-## Connect to school servers
+## How to connect to 3rd Floor Linux Computers from ...
 
-### How to connect to 3rd Floor Linux Computers from Windows computers
+### Windows
 
 1. Open the Command Prompt or Windows PowerShell. It can be opened in various methods:
    - For the Command Prompt, type in WINDOWS-R, then type in "cmd" in the dialog box.
@@ -33,7 +33,7 @@ to [https://ou-cs3560-examples.netlify.com/](https://ou-cs3560-examples.netlify.
 
 2. In the window with the command prompt (or powershell), type in the command for ssh:
 
-```shell
+```console
 ssh username@pu1.cs.ohio.edu
 ```
 
@@ -44,7 +44,7 @@ and click "Add a feature", then search for "OpenSSH Client", and install it.
 
 For example, here is the output from the using `ssh changliu@pu1.cs.ohio.edu` in command prompt
 
-```
+```console
 C:\Users\Chang Liu>ssh changliu@pu1.cs.ohio.edu
 The authenticity of host 'pu1.cs.ohio.edu (132.235.1.15)' can't be established.
 ECDSA key fingerprint is SHA256:PCIKPlKu35MHGF+zSgDUbEvFRNDN8vapyp7lYVI+O8Q.
@@ -91,9 +91,11 @@ Doxygen version 1.8.13
 ```
 pu[1-3].cs.ohio.edu are the preferred remote servers. odd[?].cs.ohio.edu are the workstations in the 3rd floor lab.
 
-### For Mac
+You also have an option to use software like [PuTTY](https://www.putty.org/). To connect click on session on the left side bar, and enter pu[1-3].cs.ohio.edu for "Host Name". Make sure that "Connection Type" is SSH. Then you can click open, PuTTY will prompt you for a username and password.
 
-Follow the same step for Windows, but use "Terminal" app instead.
+### MacOS
+
+Follow the same steps for Windows, but use "Terminal" app instead.
 
 ### Connect via vscode
 
@@ -107,11 +109,11 @@ This is what I usually have in my ~/.ssh/config for the school server.
 
 ![ssh-config](./.github/images/ssh-config.png)
 
-Then in the extension you will see the list of SSH target.
+Then in the extension you will see the list of SSH targets.
 
 ![ssh-config](./.github/images/ssh-targets-list.png)
 
-Then you can connect to the school server and edit file there from vscode.
+Then you can connect to the school server and edit file from within vscode.
 
 
 ## TkInter On macOS
