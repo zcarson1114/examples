@@ -1,6 +1,6 @@
 /**
  * @file fib.cc
- * @brief An implementation of the functions.
+ * @brief Two diffferent implementation of the fibonacci functions.
  * 
  * All the documentation for these functions are in the .h file already.
  */
