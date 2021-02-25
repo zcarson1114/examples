@@ -14,12 +14,16 @@ FibCache::~FibCache() {
 
 
 int FibCache::get(int n) {
-    // Catch invalid n.
+    /**
+     * <h4>Implementation Note</h4>
+     */
+    /// Catch an invalid value of n.
     if (n < 1) {
         return 0;
     }
 
-    // Check if cache is available.
+    /// Check if we already calculated the value
+    /// before or not.
     if (cache[n - 1] != 0) {
         return cache[n - 1];
     }

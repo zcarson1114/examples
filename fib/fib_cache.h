@@ -7,6 +7,14 @@
 #define FIB_CACHE_H
 #include <vector>
 
+ /**
+  * @class FibCache
+  * @brief Calculating Fibonacci with value caching
+  *
+  * The class has internal vector that save the calulated values of fibbonacci number
+  * at position `n`. Thus, when the same value is requested again, the cached
+  * values is return.
+  */
 class FibCache {
 private:
     int cache_size; //!< The length of the slot of cahce.
