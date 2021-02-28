@@ -1,0 +1,6 @@
+[submodule "unittesting.examples/cpp-discord/deps/sleepy-discord"]
+	path = unittesting.examples/cpp-discord/deps/sleepy-discord
+	url = https://github.com/yourWaifu/sleepy-discord.git
+[submodule "unittesting.examples/cpp-discord/deps/cpp-dotenv"]
+	path = unittesting.examples/cpp-discord/deps/cpp-dotenv
+	url = https://github.com/adeharo9/cpp-dotenv
