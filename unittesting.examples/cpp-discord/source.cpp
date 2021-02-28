@@ -18,5 +18,6 @@ class MyBot : public SleepyDiscord::DiscordClient {
 int main() {
     dotenv::env.load_dotenv();
     MyBot bot(dotenv::env["DISCORD_BOT_TOKEN"], SleepyDiscord::USER_CONTROLED_THREADS);
+    bot.setIntents(SleepyDiscord::Intent::SERVER_MESSAGES | SleepyDiscord::Intent::SERVER_EMOJIS | SleepyDiscord::Intent::SERVER_MESSAGE_REACTIONS );
     bot.run();
 }
