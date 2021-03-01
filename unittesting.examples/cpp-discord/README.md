@@ -10,17 +10,12 @@ An example discord bot written in C++.
 
 - [sleepy-discord](https://yourwaifu.dev/sleepy-discord/)
 - [cpp-dotenv](https://github.com/adeharo9/cpp-dotenv)
-- [cmake](https://cmake.org/) as build system.
 
-After you clone this repository, run
-
-``` shellsession
-$ git submodule init
-```
-
-to clone the two submodules.
+The source code for both project should be fetched automatically during cmake's configuration phase.
 
 ## Compilation Note
+
+This project relies on [cmake](https://cmake.org/), so make sure that you have it installed.
 
 ``` shellsession
 $ mkdir build
@@ -49,3 +44,6 @@ use `-DCMAKE_EXPORT_COMPILE_COMMANDS=1` to generate the `compile_commands.json`.
 Obtain the valid bot token from Discord's developer portal. Create a `.env` file from `env.template`,
 and replace `token` with the one you obtained. Make sure that the `.env` file is in the 
 working directory where you run the binary.
+
+For example, if you have `.env` on the same level as this readme file, you can run the binary from
+the same level using relative path `./build/bot`.
