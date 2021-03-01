@@ -1,12 +1,21 @@
 /**
  * @file source.cpp
  *
- * Content taken entirely from https://github.com/yourWaifu/sleepy-discord/blob/master/examples/hello/example0.cpp */
+ * Based on https://github.com/yourWaifu/sleepy-discord/blob/master/examples/hello/example0.cpp
+ * and https://github.com/yourWaifu/sleepy-discord/blob/master/examples/rock-paper-scissors/main.cpp
+ */
 #include <string>
 #include <list>
 #include "dotenv.h"
 #include "sleepy_discord/sleepy_discord.h"
 
+/**
+ * @class MyBot
+ * @brief An example bot
+ *
+ * It will response to message prefixed with ++, and add
+ * reaaction to message.
+ */
 class MyBot : public SleepyDiscord::DiscordClient {
     private:
         struct CounterState {
@@ -62,7 +71,6 @@ class MyBot : public SleepyDiscord::DiscordClient {
                 if (!is_found) {
                     message.reply(this, "nothing");
                 }
-
             }
         }
 };
